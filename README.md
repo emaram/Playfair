@@ -62,8 +62,8 @@ Mesajul criptat se construieste pe baza matricii de criptare luand fiecare perec
 Continuand exemplul de mai sus, se obtine urmatorul mesajul criptat:
 | Element         | Valoare                                            |
 |-----------------|----------------------------------------------------|
-| Sirul de baza   | Andreea o va ajuta pe Maria, apoi va pleca.        |
+| Sirul de baza   | **Andreea o va ajuta pe Maria, apoi va pleca.**        |
 | Sirul prelucrat | ANDREEAOVAAJUTAPEMARIAAPOIVAPLECA                  |
 | Perechi generate| AN DR EZ AO VA AI UT AP EM AR IA AP OI VA PL EC AX |
-| Perechi criptate| |
-| Mesaj criptat   | |
+| Perechi criptate| TV TB SY IN AT IC ND CN SL CT CI CN WH AT QK SE CV |
+| Mesaj criptat   | **TVTBSYINATICNDCNSLCTCICNWHATQKSECV**                 |
