@@ -6,6 +6,7 @@ Desi atribuit baronului Lyon Playfair, acest algorit a fost inventat de Charles 
 Dupa crearea algoritmului, baronul Playfair a insistat si a convins guvernul britanic sa il adopte pentru uz oficial; acesta fiind si motivul pentru care ii poarta numele. Algoritmul a fost utilizat "in original" de catre armata britanica in razboiul din Africa de Sud, iar versiuni modificate ale acestuia au fost utilizate in Primul Razboi Mondial de armata britanica, precum si in Al Doilea Razboi Mondial de catre armata australiana.
 
 ## Descrierea algoritmului Playfair
+Cifrul Playfair este un sistem de criptare simetric, bazat pe o cheie unica: aceeasi cheie este folosita atat pentru criptare, cat si pentru decriptare. Acest cifru face parte din categoria primitivelor criptografice de substitutie poligramica, ce presupun modificarea pozitiei unui caracter din textul clar in textul criptat, fara a-i modifica valoarea.
 ### Criptarea Playfair
 Criptarea Playfair implica parcurgerea urmatorilor pasi:
 1. Prelucrarea textului ce urmeaza a fi criptat
@@ -23,14 +24,14 @@ Algoritmul de criptare presupune gruparea textului obtinut in perechi de litere,
 > Nota: Algoritmul propriu-zis nu obliga utilizarea unor caractere anume pentru inlocuire, ci recomanda sa se foloseasca cele mai putin utilizate litere dintr-o anumita limba. Astfel, caracterele 'X', respectiv'Z' reprezinta alegerea noastra.
 
 Exemplu:
-| Element         | Valoare                                            |
-|-----------------|----------------------------------------------------|
-| Sirul de baza   | Andreea o va ajuta pe Maria, apoi va pleca.        |
-| Sirul prelucrat | ANDREEAOVAAJUTAPEMARIAAPOIVAPLECA                  |
-| Perechi generate| AN DR EZ AO VA AI UT AP EM AR IA AP OI VA PL EC AX |
+| Element         | Valoare                                                        |
+|-----------------|----------------------------------------------------------------|
+| Sirul de baza   | Andreea o va ajuta pe Maria, apoi va pleca.                    |
+| Sirul prelucrat | ANDREZAXOXVAXAIUTAXPEXMARIAXAPOIXVAXPLECAX                     |
+| Perechi generate| AN DR EZ AX OX VA XA IU TA XP EX MA RI AX AP OI XV AX PL EC AX |
 
 #### 2. Prelucrarea cheii de criptare
-Cheia de criptare se prelucreaza _dupa aceeasi metoda_ prin care se prelucreaza textul ce urmeaza a fi criptat, cu mentiunea ca, in cazul cheii de criptare, nu este necesar avem un numar par de caractere.
+Cheia de criptare se prelucreaza _dupa aceeasi metoda_ prin care se prelucreaza textul ce urmeaza a fi criptat, cu mentiunea ca, in cazul cheii de criptare, nu este necesar sa avem un numar par de caractere.
 
 Exemplu:
 | Element          | Valoare                 |
@@ -55,9 +56,9 @@ Pe baza exemplului de mai sus, matricea de criptare este urmatoarea:
 
 #### 4. Construirea mesajului criptat
 Mesajul criptat se construieste pe baza matricii de criptare luand fiecare pereche de litere si aplicand dupa urmatorul algoritm:
-- daca cele doua litere sunt pozitionate pe acelasi rand, se vor inlocui cu literele aflate pe pozitia **din dreapta** (in cazul in care o litera este ultima in rand, se va inlocui, circular, cu prima litera din acel rand). Spre exemplu, perechea **IE** se va inlocui cu **CS**, iar perechea **IS** se va inlocui cu **CA**
-- daca cele doua litere sunt pozitionate pe aceeasi coloana, se vor inlocui cu literele aflate pe ceeasi coloana, dar pe randul imediat **urmator** (in cazul in care o litera este ultima din coloana, se va inlocui, circular cu prima litera din aceeasi coloana). Spre exemplu, perechea **TN** se va inlocui cu **FV**, iar perechea **TV** se va inlocui cu **FA**
-- daca literele se afla atat pe randuri, cat si pe coloane diferite, se va aplica **regula dreptunghiului**, astfel incat prima litera se va inlocui cu litera de pe acelasi rand, dar corespunzatoare coloanei celei de-a doua litere, iar a doua cu litera de pe acelasi rans, dar corespunzatoare coloanei pe care se fla prima litera. Spre exemplu, perechea **AL** se va inlocui cu **EF**
+- daca cele doua litere sunt pozitionate pe acelasi rand, se vor inlocui cu literele aflate pe pozitia **din dreapta** (in cazul in care o litera este ultima in rand, se va inlocui, circular, cu prima litera din acel rand). Spre exemplu, in mesajul nostru, perechea **DR** se va inlocui cu **TB**
+- daca cele doua litere sunt pozitionate pe aceeasi coloana, se vor inlocui cu literele aflate pe ceeasi coloana, dar pe randul imediat **urmator** (in cazul in care o litera este ultima din coloana, se va inlocui, circular cu prima litera din aceeasi coloana). Spre exemplu, perechea **AN** se va inlocui cu **TV**
+- daca literele se afla atat pe randuri, cat si pe coloane diferite, se va aplica **regula dreptunghiului**, traseul fiind pe verticala, de la cea de-a doua litera, catre prima. Astfel, prima litera se va inlocui cu litera de pe acelasi rand, dar corespunzatoare coloanei celei de-a doua litere, iar a doua cu litera de pe acelasi rans, dar corespunzatoare coloanei pe care se fla prima litera. Spre exemplu, in mesajul nostru, perechea **EZ** se va inlocui cu **SY**
 
 Continuand exemplul de mai sus, se obtine urmatorul mesajul criptat:
 | Element           | Valoare                                                        |
@@ -83,9 +84,9 @@ Intrucat avem aceeasi cheie de decriptare, matricea de decriptare este identica 
 
 #### 3. Decriptarea propriu-zisa
 Acesta este algoritmul _invers_ celui folosit la criptare. Astfel, luand fiecare pereche de litere aplicam urmatorul algoritm:
-- daca cele doua litere sunt pozitionate pe acelasi rand, se vor inlocui cu literele aflate pe pozitia **din stanga** (in cazul in care o litera este prima in rand, se va inlocui, circular, cu ultima din acel rand). Spre exemplu, perechea **IE** se va inlocui cu **AC**, iar perechea **AE** se va inlocui cu **SC**
-- daca cele doua litere sunt pozitionate pe aceeasi coloana, se vor inlocui cu literele aflate pe ceeasi coloana, dar pe randul imediat **anterior** (in cazul in care o litera este prima din coloana, se va inlocui, circular cu ultima litera din aceeasi coloana). Spre exemplu, perechea **TN** se va inlocui cu **AF**, iar perechea **AN** se va inlocui cu **VF**
-- daca literele se afla atat pe randuri, cat si pe coloane diferite, se va aplica **regula dreptunghiului**, astfel incat prima litera se va inlocui cu litera de pe acelasi rand, dar corespunzatoare coloanei celei de-a doua litere, iar a doua cu litera de pe acelasi rans, dar corespunzatoare coloanei pe care se fla prima litera. Spre exemplu, perechea **AL** se va inlocui cu **EF**
+- daca cele doua litere sunt pozitionate pe acelasi rand, se vor inlocui cu literele aflate pe pozitia **din stanga** (in cazul in care o litera este prima in rand, se va inlocui, circular, cu ultima din acel rand). Spre exemplu, perechea **TB** se va inlocui cu **DR**
+- daca cele doua litere sunt pozitionate pe aceeasi coloana, se vor inlocui cu literele aflate pe ceeasi coloana, dar pe randul imediat **anterior** (in cazul in care o litera este prima din coloana, se va inlocui, circular cu ultima litera din aceeasi coloana). Spre exemplu, perechea **TV** se va inlocui cu **AN**
+- daca literele se afla atat pe randuri, cat si pe coloane diferite, se va aplica **regula dreptunghiului**, astfel incat prima litera se va inlocui cu litera de pe acelasi rand, dar corespunzatoare coloanei celei de-a doua litere, iar a doua cu litera de pe acelasi rans, dar corespunzatoare coloanei pe care se fla prima litera. Spre exemplu, perechea **SY** se va inlocui cu **EZ**
 
 Dupa generarea sirului decriptat, 'X' se inlocuieste cu spatiu, pentru a genera textul final decriptat.
 
@@ -97,3 +98,14 @@ Mergand pe exemplul de mai sus, se obtine urmatorul mesajul decriptat:
 | Perechi decriptate | AN DR EZ AX OX VA XA IU TA XP EX MA RI AX AP OI XV AX PL EC AX |
 | Sir decriptat      | ANDREZAXOXVAXAIUTAXPEXMARIAXAPOIXVAXPLECAX                     |
 | **Mesaj criptat**  | **ANDREZA O VA AIUTA PE MARIA APOI VA PLECA**                  |
+
+## Limitari ale algoritmului Playfair
+Cifrul Playfair se bazeaza pe lista de 25 de cacatere majuscule ale alfabetului latin, pe inlocuirea caracterelor speciale si inlocuirea spatiului si a literelor duble cu o litera "cea mai putin folosita din punct de vedere statistic" intr-o anumita limba. Deasemenea, acest algoritm trateaza 'I' si 'J' ca fiind aceeasi litera: 'I'.
+Astfel, intrucat in aplicatia de fata am inlocuit pentru criptare, spatiile dintre cuvinte cu 'X', dublurile cu 'Z', respectiv 'I' cu 'J', dupa decriptare textul rezultat va avea usoare distorsiuni.
+```
+Folosind aceeasi cheie de criptare de mai sus:
+ALEXANDRA va fi criptat in EFCYTVTBCV, care dupa decriptare, va rezulta in ALE ANDRA, intrucat 'X' a fost considerat spatiu
+MAJORITAR va fi criptat in FSHWHCFTKC, care dupa decriptare, va rezulta in MAIORITAR, intrucat 'J' a fost schimbat cu 'I'
+ANREEA va fi criptat in TVTBSYCV, care dupa decriptare, va rezulta in ANDREZA, intrucat perechea 'EE' a fost inlocuita cu 'EZ'
+```
+
