@@ -1,4 +1,6 @@
 Playfair
 *.o
 *.txt
+obj/*.o
+obj
 

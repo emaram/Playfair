@@ -1,14 +1,26 @@
-Playfair: main.o EncryptionManager.o Playfair.o
-	g++ -o Playfair main.o EncryptionManager.o Playfair.o
+CXX		:= g++
+CXXFLAGS	:= -std=gnu++14 -Wall
+OBJ_DIR		:= obj
+OBJECTS		:= $(OBJ_DIR)/main.o $(OBJ_DIR)/EncryptionManager.o $(OBJ_DIR)/Playfair.o 
+TARGET		:= Playfair
 
-main.o: main.cpp
-	g++ -std=gnu++11 -o main.o -c main.cpp
+all: build $(TARGET)
 
-EncryptionManager.o: EncryptionManager.cpp
-	g++ -std=gnu++11 -o EncryptionManager.o -c EncryptionManager.cpp
+build:
+	@mkdir -p $(OBJ_DIR)
 
-Playfair.o: playfair.cpp
-	g++ -std=gnu++11 -o Playfair.o -c Playfair.cpp
+Playfair: $(OBJECTS)
+	$(CXX) $(CXXFLAGS) -o $@ $(OBJECTS)
 
-clean: 
-	rm -f Playfair *.o
+$(OBJ_DIR)/%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -o $@ -c $^
+
+.PHONY: all build debug clean
+
+debug: CXXFLAGS += -DDEBUG -g
+debug: all
+
+clean:
+	-@rm -f *.o $(OBJECTS) Playfair
+	-@rmdir $(OBJ_DIR)
+
