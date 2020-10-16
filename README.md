@@ -100,7 +100,7 @@ Mergand pe exemplul de mai sus, se obtine urmatorul mesajul decriptat:
 | **Mesaj criptat**  | **ANDREZA O VA AIUTA PE MARIA APOI VA PLECA**                  |
 
 ## Limitari ale algoritmului Playfair
-Cifrul Playfair se bazeaza pe lista de 25 de cacatere majuscule ale alfabetului latin, pe inlocuirea caracterelor speciale si inlocuirea spatiului si a literelor duble cu o litera "cea mai putin folosita din punct de vedere statistic" intr-o anumita limba. Deasemenea, acest algoritm trateaza 'I' si 'J' ca fiind aceeasi litera: 'I'.
+Cifrul Playfair se bazeaza pe lista de 25 de caratere majuscule ale alfabetului latin, pe inlocuirea caracterelor speciale si inlocuirea spatiului si a literelor duble cu o litera "cea mai putin folosita din punct de vedere statistic" intr-o anumita limba. Deasemenea, acest algoritm trateaza 'I' si 'J' ca fiind aceeasi litera: 'I'.
 Astfel, intrucat in aplicatia de fata am inlocuit pentru criptare, spatiile dintre cuvinte cu 'X', dublurile cu 'Z', respectiv 'I' cu 'J', dupa decriptare textul rezultat va avea usoare distorsiuni.
 ```
 Folosind aceeasi cheie de criptare de mai sus:
