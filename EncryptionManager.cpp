@@ -82,6 +82,7 @@ void EncryptionManager::readFile(const string & filename, string & content)
 		string sline;
 		while (getline(file, sline)) {
 			content.append(sline);
+			content.append("\n");
 		}
 		file.close();
 	}

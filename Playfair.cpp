@@ -106,7 +106,24 @@ int Playfair::decrypt(const std::string & encrypted_text, /*out*/ std::string & 
 		this->printDetailedInfoFooter();
 	}
 	
-	std::replace(plain_text.begin(), plain_text.end(), 'X', ' ');
+	for (string::size_type i = 0; i < plain_text.length(); i++)
+	{
+		switch (plain_text[i])
+		{
+		case 'Q':
+			plain_text[i] = ' ';
+			break;
+		case 'W':
+			plain_text[i] = '\n';
+			break;
+		case 'Y':
+			if (i > 0 && i % 2 == 1)				// Only if it's an even character
+				plain_text[i] = plain_text[i - 1];
+			break;
+		default:
+			break;
+		}
+	}
 	
 	return 0;
 }
@@ -144,11 +161,12 @@ void Playfair::printTable()
 
 // -----------------------------------------------------------------------------
 // convertToUpper
-//		Private function that converts all characters to uppercase (strupr does not work on C++20)
+//		Private function that converts all characters to uppercase 
 //		For each character c it checks:
 //			if between 65 and  90 (ASCII codes: 'A' = 65, 'Z' = 90) keep it as is
 //			if between 97 and 122 (ASCII codes: 'a' = 97, 'z' = 122) keep c - 32 (e.g. 'a' -> 'A', 'b' -> 'B')
-//			if 32 (ASCII code for <space>, replace with 88 (ASCII code 'X' = 88)
+//			if SPACE or TAB, replace with 'Q'
+//			if NEW LINE, replace with 'W'
 //			if other value, ignore it
 // 			make I/J => use 73 for both 'I' and 'J'
 //
@@ -169,17 +187,25 @@ std::string Playfair::convertToUpper(const std::string & s)
 				res << (char)(s[i] - 32);
 			else
 			{
-				if (s[i] == 32)					// SPACE character, transform it to 'X'
-					res << (char)88;
-				else
-					continue;					// Ignore any other 'special' character
+				switch (s[i])
+				{
+					case ' ':				// SPACE or TAB
+					case '\t':				// replace with 'Q'
+						res << 'Q';
+						break;
+					case '\n':				// NEW LINE, replace with 'W'
+						res << 'W';
+						break;
+					default:
+						break;
+				}
 			}
 		}
 	}
 	res.flush();
 
 	string result = res.str();
-	replace(result.begin(), result.end(), 74, 73);
+	replace(result.begin(), result.end(), 'J', 'I');
 	
 	return result;
 }
@@ -232,15 +258,15 @@ void Playfair::buildTable()
 			}
 		}
 		c++;									// Move to next character
-		if (c == 74)							// If next character is 'J', ignore it and move to next one
+		if (c == 'J')							// If next character is 'J', ignore it and move to next one
 			c++;
 	}
 }
 
 // -----------------------------------------------------------------------------
 // buildPair
-//		Creates a vector of 2-char strings. It replaces the doubles with Z and
-//		padds the last character with X is odd number of chars
+//		Creates a vector of 2-char strings. It replaces the doubles with Y and
+//		padds the last character with Q is odd number of chars
 //
 //	@param IN  input:		String to be parsed
 //	@param OUT output:		Resulted vector of strings
@@ -250,7 +276,7 @@ void Playfair::buildPairs(const std::string & input, /*out*/std::vector<std::str
 	output.clear();
 	string temp = input;
 	if (temp.length() % 2 == 1)
-		temp.push_back(88);			// Add 'X' if odd number of characters
+		temp.push_back('Q');			// Add 'Q' (as SPACE) if odd number of characters
 	
 	string row;
 	for (auto it : temp)
@@ -258,11 +284,11 @@ void Playfair::buildPairs(const std::string & input, /*out*/std::vector<std::str
 		row.push_back(it);
 		if (row.length() == 2)
 		{
-			// Replace with Z if same characters
+			// Replace with 'Y' if same characters
 			if (row[0] == row[1])
 			{
-				// Corner case: if both are already 'Z', make the second one 'X'
-				row[1] = (row[0] == 90) ? 88 : 90;
+				// Corner case: if both are already 'Y', make the second one 'Q'
+				row[1] = (row[0] == 'Y') ? 'Q' : 'Y';
 			}
 			
 			// Now, add row in the vector
