@@ -4,11 +4,8 @@
 //
 //  Created by Eugen Marin and Elena Marin on 12/10/2020.
 //
-
 #include "EncryptionManager.h"
 
-void encrypt(const string & filename);
-void decrypt(const string & filename);
 void printUsageError();
 
 // -----------------------------------------------------------------------------

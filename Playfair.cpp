@@ -8,6 +8,8 @@
 #include <algorithm>
 #include <iostream>
 
+#define USE_STL_FEATURES 
+
 // -----------------------------------------------------------------------------
 // Constructor
 //		It remembers the key used for encryption / decryption (in UPPERCASE)
@@ -44,8 +46,7 @@ int Playfair::encrypt(const std::string & plain_text, /*out*/ std::string & encr
 	{
 		this->printDetailedInfoHeader();
 		cout << "  Pair of values:  ";
-		for (auto elem : pair_array)
-			cout << elem << " ";
+		for_each (pair_array.begin(), pair_array.end(), [](string & e) { cout << e << " "; });
 		cout << endl;
 		cout << "  Encrypted pairs: ";
 	}
@@ -53,7 +54,6 @@ int Playfair::encrypt(const std::string & plain_text, /*out*/ std::string & encr
 	encrypted_text.clear();
 	for (auto elem : pair_array)
 	{
-		
 		this->getEncryptedPair(elem);
 		if (_show_all_info)
 			cout << elem << " ";
@@ -86,8 +86,7 @@ int Playfair::decrypt(const std::string & encrypted_text, /*out*/ std::string & 
 	{
 		this->printDetailedInfoHeader();
 		cout << "  Pair of values:  ";
-		for (auto elem : pair_array)
-			cout << elem << " ";
+		for_each (pair_array.begin(), pair_array.end(), [](string & e) { cout << e << " "; });
 		cout << endl;
 		cout << "  Decrypted pairs: ";
 	}
@@ -175,6 +174,28 @@ void Playfair::printTable()
 // -----------------------------------------------------------------------------
 std::string Playfair::convertToUpper(const std::string & s)
 {
+	string result = s;
+
+#ifdef USE_STL_FEATURES
+
+	for_each (result.begin(), result.end(), [](char & c) {
+		c = toupper(c);
+	});
+
+	replace(result.begin(), result.end(), 'J', 'I');
+	replace(result.begin(), result.end(), ' ', 'Q');
+	replace(result.begin(), result.end(), '\t', 'Q');
+	replace(result.begin(), result.end(), '\n', 'W');
+
+	// Remove all special characters
+	result.erase(
+		remove_if (result.begin(), result.end(), [](char & c) {
+    		return (isalpha(c) == false && isspace(c) == false && c != '\t' && c != '\n');  
+		}), 
+		result.end()
+	);
+
+#else
 	stringstream res;
 	
 	for (int i = 0; i < s.length(); i++)
@@ -204,10 +225,11 @@ std::string Playfair::convertToUpper(const std::string & s)
 	}
 	res.flush();
 
-	string result = res.str();
+	result = res.str();
 	replace(result.begin(), result.end(), 'J', 'I');
-	
+#endif	
 	return result;
+
 }
 
 // -----------------------------------------------------------------------------
