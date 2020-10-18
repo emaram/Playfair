@@ -6,7 +6,7 @@ Desi atribuit baronului Lyon Playfair, acest algorit a fost inventat de Charles 
 Dupa crearea algoritmului, baronul Playfair a insistat si a convins guvernul britanic sa il adopte pentru uz oficial; acesta fiind si motivul pentru care ii poarta numele. Algoritmul a fost utilizat "in original" de catre armata britanica in razboiul din Africa de Sud, iar versiuni modificate ale acestuia au fost utilizate in Primul Razboi Mondial de armata britanica, precum si in Al Doilea Razboi Mondial de catre armata australiana.
 
 ## Descrierea algoritmului Playfair
-Cifrul Playfair este un sistem de criptare simetric, bazat pe o cheie unica: aceeasi cheie este folosita atat pentru criptare, cat si pentru decriptare. Acest cifru face parte din categoria primitivelor criptografice de substitutie poligramica, ce presupun modificarea pozitiei unui caracter din textul clar in textul criptat, fara a-i modifica valoarea.
+Cifrul Playfair este un sistem de criptare simetric, bazat pe o cheie unica: aceeasi cheie este folosita atat pentru criptare, cat si pentru decriptare. Acest cifru face parte din categoria primitivelor criptografice de substitutie poligramica, ce presupun modificarea pozitiei unui caracter din textul clar in textul criptat, fara a-i modifica valoarea. El asigura astfel confuzia necesara cifrarii, insa nu asigura difuzie.
 ### Criptarea Playfair
 Criptarea Playfair implica parcurgerea urmatorilor pasi:
 1. Prelucrarea textului ce urmeaza a fi criptat
@@ -103,6 +103,18 @@ Mergand pe exemplul de mai sus, se obtine urmatorul mesajul decriptat:
 ## Limitari ale algoritmului Playfair
 Cifrul Playfair se bazeaza pe lista de 25 de caratere majuscule ale alfabetului latin, pe inlocuirea caracterelor speciale si inlocuirea spatiului si a literelor duble cu o litera "cea mai putin folosita din punct de vedere statistic" intr-o anumita limba. Deasemenea, acest algoritm trateaza 'I' si 'J' ca fiind aceeasi litera: 'I'.
 Dupa cum se vede, "MESAJUL" a fost decriptat ca "MESAIUL".
+
+## Criptanaliza Playfair
+Cifrul Playfair este un algoritm de criptare slab, fiind mai complex decat o simpla substitutie prin faptul ca foloseste substitutia digrafica - inlocuirea a doua litere. Complexitatea algoritmului se bazeaza pe complexitatea cheii de criptare alese. Astfel, cu cat cheia de criptare este mai lunga si cat mai putin repetitiva, cu atat procentul de succes in criptanaliza este mai mic.  
+Fiind vorba de o cheie de criptare cu lungime variabila (de la cateva caractere pana la o propozitie, fraza, etc.) atac de tipul **forta bruta (brute force attack)** va avea o rata de succes foarte mica, bazata pe noroc.
+Folosind un calculator, exista doua metode prin care un cifru Playfair poate fi atacat:
+1. **Prin dictionar de cuvinte si expresii** - plecand de la premisa ca textul a fost cifrat folosind un cuvant sau o propozitie "reala", se poate prin incercari sa se ghiceasca aceasta cheie. Procedeul consta in decriptari succesive folosind cheile din dictionar una cate una si interpretand textul rezultat.
+2. **Metoda Hill Climbing** - creata de George Lasry, unul din cei mai apreciati "codebreakers", aceasta metoda pleaca de la premisa ca se cunoaste algoritmul de cifrare si se doreste aflarea cheii de criptare. Medotologia presupune urmatorii pasi:
+  - Se construieste o cheie aleatoare - poate chiar folosind un dictionar
+  - Se decripteaza cu acea cheie, iar textul rezultat se compara, din punct de vedere al limbii, folosind o asa-numita "functie-fitness" care genereaza un nivel de corectitudine pe baza unor principii de limba (exemplu: frecventa literelor in acea limba)
+  - Se modifica cheia foarte putin (un caracter), se decripteaza si se compara diferentele, folosind aceeasi "functie-fitness". Daca nivelul de corectitudine este mai bun, se pastreaza cheia si se repeta procesul. Daca nivelul de corectitudine este mai mic, se intoarce la cheia anterioara.
+  - Procesul se repeta pana cand textul rezultat nu mai poate fi imbunatatit
+Acest proces poate duce, dupa mai multe iteratii, la ghicirea textului, chiar daca nu in totalitate. Deasemenea, impreuna cu Hill Climbing se pot verifica si slabiciunile algoritmului. De exemplu: perechile AB si BA vor fi criptate cu doua perechi, la randul lor inverse, indiferent de modul de asezare a literelor in matrice (AB => XY, BA => YX).
 
 
 
