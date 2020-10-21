@@ -21,7 +21,7 @@ Textul ce urmeaza a fi criptat trebuie sa fie format exclusiv din majuscule, far
 - Literele mici se transforma in majuscule ('a' -> 'A, 'b -> 'B' etc.)
 - Litera 'J' se va transforma in litera 'I'
 - Orice alt caracter este ignorat (sters)
-Algoritmul de criptare presupune gruparea textului obtinut in perechi de litere, astfel, daca numarul total de caractere este impart, se va adauga 'Q' la sfarsitul acestuia pentru a genera ultima pereche completa, considerandu-se de fapt un spatiu. Deasemenea, algoritmul considera si o posibilitatea ca intr-un grup de caractere sa existe dubluri, situatie in care a doua litera se inlocuieste cu 'Y'.
+Algoritmul de criptare presupune gruparea textului obtinut in perechi de litere, astfel, daca numarul total de caractere este impart, se va adauga 'Q' la sfarsitul acestuia pentru a genera ultima pereche completa, considerandu-se de fapt un spatiu. Deasemenea, algoritmul considera si posibilitatea ca intr-un grup de caractere sa existe dubluri, situatie in care a doua litera se inlocuieste cu 'Y'.
 > Nota: Algoritmul propriu-zis nu obliga utilizarea unor caractere anume pentru inlocuire, ci recomanda sa se foloseasca cele mai putin utilizate litere dintr-o anumita limba. Statistic, in limba romana, cele mai rar utilizate litere sunt 'Q' si 'W', urmate de 'Y' (https://commons.wikimedia.org/wiki/File:Frecvența_literelor_română.png).
 
 Exemplu:
@@ -37,12 +37,12 @@ Cheia de criptare se prelucreaza _dupa aceeasi metoda_ prin care se prelucreaza 
 Exemplu:
 | Element          | Valoare                 |
 |------------------|-------------------------|
-| Cheia de criptare| Aici este cheia secreta |
+| Cheia de criptare| Aiciestecheiasecreta.   |
 | Cheia prelucrata | AICIESTECHEIASECRETA    |
 
 #### 3. Construirea matricii de criptare
 Matricea de criptare este un tabel de 5 x 5 elemente si se construieste dupa urmatorul algoritm:
-- incepand din coltul din stanga sus, se completeaza pe fiecare rand cu caracterele de la cheia de crptare prelucrata, **luate in mod unic**
+- incepand din coltul din stanga sus, se completeaza pe fiecare rand cu caracterele de la cheia de criptare prelucrata, **luate in mod unic**
 - se completeaza restul celulelor cu literele alfabetului ramase, deasemenea **in mod unic**
 
 Pe baza exemplului de mai sus, matricea de criptare este urmatoarea:
@@ -53,7 +53,7 @@ Pe baza exemplului de mai sus, matricea de criptare este urmatoarea:
 | **3** | F | G | K | L | M |
 | **4** | N | O | P | Q | U |
 | **5** | V | W | X | Y | Z |
-> Nota: Cu cat cheia utilizata este mai lunga, cu atât textul criptat va fi mai greu de criptanalizat. Se recomanda folosirea unei fraze / propozitii de lungime medie (3-5 cuvinte scurte).
+> Nota: Cu cat cheia utilizata este mai lunga, cu atât textul criptat va fi mai greu de criptanalizat. Se recomanda folosirea unei fraze / propozitii de lungime medie (3-5 cuvinte scurte) cu toate literele distincte.
 
 #### 4. Construirea mesajului criptat
 Mesajul criptat se construieste pe baza matricii de criptare luand fiecare pereche de litere si aplicand dupa urmatorul algoritm:
@@ -106,7 +106,7 @@ Dupa cum se vede, "MESAJUL" a fost decriptat ca "MESAIUL".
 
 ## Criptanaliza Playfair
 Cifrul Playfair este un algoritm de criptare slab, fiind mai complex decat o simpla substitutie prin faptul ca foloseste substitutia digrafica - inlocuirea a doua litere. Complexitatea algoritmului se bazeaza pe complexitatea cheii de criptare alese. Astfel, cu cat cheia de criptare este mai lunga si cat mai putin repetitiva, cu atat procentul de succes in criptanaliza este mai mic.  
-Fiind vorba de o cheie de criptare cu lungime variabila (de la cateva caractere pana la o propozitie, fraza, etc.) atac de tipul **forta bruta (brute force attack)** va avea o rata de succes foarte mica, bazata pe noroc.
+Fiind vorba de o cheie de criptare cu lungime variabila (de la cateva caractere pana la o propozitie, fraza, etc.) un atac de tipul **forta bruta (brute force attack)** va avea o rata de succes foarte mica, bazata pe noroc.
 Folosind un calculator, exista doua metode prin care un cifru Playfair poate fi atacat:
 1. **Prin dictionar de cuvinte si expresii** - plecand de la premisa ca textul a fost cifrat folosind un cuvant sau o propozitie "reala", se poate prin incercari sa se ghiceasca aceasta cheie. Procedeul consta in decriptari succesive folosind cheile din dictionar una cate una si interpretand textul rezultat.
 2. **Metoda Hill Climbing** - creata de George Lasry, unul din cei mai apreciati "codebreakers", aceasta metoda pleaca de la premisa ca se cunoaste algoritmul de cifrare si se doreste aflarea cheii de criptare. Medotologia presupune urmatorii pasi:
