@@ -104,6 +104,13 @@ Mergand pe exemplul de mai sus, se obtine urmatorul mesajul decriptat:
 Cifrul Playfair se bazeaza pe lista de 25 de caratere majuscule ale alfabetului latin, pe inlocuirea caracterelor speciale si inlocuirea spatiului si a literelor duble cu o litera "cea mai putin folosita din punct de vedere statistic" intr-o anumita limba. Deasemenea, acest algoritm trateaza 'I' si 'J' ca fiind aceeasi litera: 'I'.
 Dupa cum se vede, "MESAJUL" a fost decriptat ca "MESAIUL".
 
+### Playfair dublu
+In timpul celui de-al Doilea Razboi Mondial, armata germana a folosit o varianta imbunatatita numita Playfair dublu, care consta, pe scurt, in urmatoarele:
+1. Foloseste doua matrici 5 x 5 alipite
+2. Cheia de criptare si literele se impart in cele doua matrici
+3. Intr-o pereche de litere (X, Y) se alege X din prima matrice si Y din a doua matrice
+(https://www.researchgate.net/profile/Adrian_Atanasiu/publication/308791446_Securitatea_Informatiei_vol_1_Criptografie/links/57f1f67608ae280dd0b2804e/Securitatea-Informatiei-vol-1-Criptografie.pdf) 
+
 ## Criptanaliza Playfair
 Cifrul Playfair este un algoritm de criptare slab, fiind mai complex decat o simpla substitutie prin faptul ca foloseste substitutia digrafica - inlocuirea a doua litere. Complexitatea algoritmului se bazeaza pe complexitatea cheii de criptare alese. Astfel, cu cat cheia de criptare este mai lunga si cat mai putin repetitiva, cu atat procentul de succes in criptanaliza este mai mic.  
 Fiind vorba de o cheie de criptare cu lungime variabila (de la cateva caractere pana la o propozitie, fraza, etc.) un atac de tipul **forta bruta (brute force attack)** va avea o rata de succes foarte mica, bazata pe noroc.
@@ -116,5 +123,42 @@ Folosind un calculator, exista doua metode prin care un cifru Playfair poate fi 
   - Procesul se repeta pana cand textul rezultat nu mai poate fi imbunatatit
 Acest proces poate duce, dupa mai multe iteratii, la ghicirea textului, chiar daca nu in totalitate. Deasemenea, impreuna cu Hill Climbing se pot verifica si slabiciunile algoritmului. De exemplu: perechile AB si BA vor fi criptate cu doua perechi, la randul lor inverse, indiferent de modul de asezare a literelor in matrice (AB => XY, BA => YX).
 
+## Utilizarea aplicatiei
+Aplicatia in C/C++ se apeleaza din linie de comanda cu sau fara parametri. In toate cazurile, aplicatia citeste cheia de criptare (ca text simplu) din fisierul info.key 
 
+### Rulare fara parametri
+Aplicatia afiseaza un meniu in care utilizatorul alege criptare sau decriptare. In exemplul de mai jos, se selecteaza Encrypt (op: 1), se introduce textul in clar, iar aplicatia afiseaza rezultatul criptat.
+```
+/home/> .\Playfair
+=====================================
+Playfair - Main menu
+=====================================
+1. Encrypt a text
+2. Decrypt a text
+0. EXIT
+=====================================
+Please, select an option: 1
 
+Plain text:      Andreea cripteaza mesajul folosind un algoritm cunoscut
+Encrypted text:  TVTBBEENRKCOBASVENLSAISOQYGNGQACUTUNOUEFOWHCDFPENOUISPBN
+```
+
+### Rulare cu parametri
+Aplicatia se poate apela cu prametri, specificandu-se operatia dorita precum si un fisier de intrare, astfel:
+- -e sau --encrypt {nume fisier}
+- -d sau --decrypt {nume fisier}
+In ambele cazuri, aplicatia citeste fisierul de intrare, aplica algoritmul corespunzator si salveaza rezultatul intr-un fisier cu numele out.txt
+In exemplul de mai jos, se face criptarea / decriptarea unui text.
+```
+/home/> ./Playfair -e plain_input.txt
+Encrypted text:  Please see out.txt
+
+/home/> ./Playfair --decrypt enc_input.txt
+Decrypted text:  Please see out.txt
+```
+
+## Bibliografie
+1. Wikipedia – Playfair cipher - https://en.wikipedia.org/wiki/Playfair_cipher 
+2. Frecventa literelor in limba romana - https://commons.wikimedia.org/wiki/File:Frecven%C8%9Ba_literelor_rom%C3%A2n%C4%83.png
+3. Adrian Constantin Atanasiu - Securitatea Informatiei, vol. 1, Universitatea din Bucuresti, Aprilie 2007 - https://www.researchgate.net/profile/Adrian_Atanasiu/publication/308791446_Securitatea_Informatiei_vol_1_Criptografie/links/57f1f67608ae280dd0b2804e/Securitatea-Informatiei-vol-1-Criptografie.pdf
+4 Aplicatia in Java - https://github.com/Elena-Marin/PlayfairJava
