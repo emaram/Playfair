@@ -161,4 +161,8 @@ Decrypted text:  Please see out.txt
 1. Wikipedia – Playfair cipher - https://en.wikipedia.org/wiki/Playfair_cipher 
 2. Frecventa literelor in limba romana - https://commons.wikimedia.org/wiki/File:Frecven%C8%9Ba_literelor_rom%C3%A2n%C4%83.png
 3. Adrian Constantin Atanasiu - Securitatea Informatiei, vol. 1, Universitatea din Bucuresti, Aprilie 2007 - https://www.researchgate.net/profile/Adrian_Atanasiu/publication/308791446_Securitatea_Informatiei_vol_1_Criptografie/links/57f1f67608ae280dd0b2804e/Securitatea-Informatiei-vol-1-Criptografie.pdf
-4 Aplicatia in Java - https://github.com/Elena-Marin/PlayfairJava
+4. A mird in the hand is worth two in the mush: Solving ciphers with Hill Climbing - https://scienceblogs.de/klausis-krypto-kolumne/2017/03/26/a-mird-in-the-hand-is-worth-two-in-the-mush-solving-ciphers-with-hill-climbing/
+
+
+Aplicatia in Java - https://github.com/Elena-Marin/PlayfairJava
+
