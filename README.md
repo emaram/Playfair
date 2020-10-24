@@ -1,12 +1,14 @@
 # Playfair
 
 ## Scurt istoric
-Desi atribuit baronului Lyon Playfair, acest algorit a fost inventat de Charles Wheatstone; fiind prezentat si publicat pentru prima oara la 26 martie 1854. Initial a fost respins de "British Foreign Office" pe motiv ca e prea complicat si greu de inteles.
+Desi atribuit Lordul Lyon Playfair, acest algorit a fost inventat de Charles Wheatstone; fiind prezentat si publicat pentru prima oara la 26 martie 1854. Initial a fost respins de "British Foreign Office" pe motiv ca e prea complicat si greu de inteles.
 
-Dupa crearea algoritmului, baronul Playfair a insistat si a convins guvernul britanic sa il adopte pentru uz oficial; acesta fiind si motivul pentru care ii poarta numele. Algoritmul a fost utilizat "in original" de catre armata britanica in razboiul din Africa de Sud, iar versiuni modificate ale acestuia au fost utilizate in Primul Razboi Mondial de armata britanica, precum si in Al Doilea Razboi Mondial de catre armata australiana.
+Dupa crearea algoritmului, Lordul Playfair a insistat si a convins guvernul britanic sa il adopte pentru uz oficial; acesta fiind si motivul pentru care ii poarta numele. Algoritmul a fost utilizat "in original" de catre armata britanica in razboiul din Africa de Sud, iar versiuni modificate ale acestuia au fost utilizate in Primul Razboi Mondial de armata britanica, precum si in Al Doilea Razboi Mondial de catre armata australiana.
+
+Armata romana a folosit, deasemenea, in timpul Primului Razboi Mondial o versiune modificata a acestui algoritm (cu o matrice de criptare de 8 x 3), iar la inceputul celui de-al Doilea Rarboi Mondial, Germania Nazista a folosit o versiune numita Playfair dublu. [Adrian C-tin Anastasiu – Securitatea Informației, vol. 1 (Aprilie 2007)]
 
 ## Descrierea algoritmului Playfair
-Cifrul Playfair este un sistem de criptare simetric, bazat pe o cheie unica: aceeasi cheie este folosita atat pentru criptare, cat si pentru decriptare. Acest cifru face parte din categoria primitivelor criptografice de substitutie poligramica, ce presupun modificarea pozitiei unui caracter din textul clar in textul criptat, fara a-i modifica valoarea. El asigura astfel confuzia necesara cifrarii, insa nu asigura difuzie.
+Cifrul Playfair este un sistem de criptare simetric, bazat pe o cheie simetrica: aceeasi cheie este folosita atat pentru criptare, cat si pentru decriptare. Acest cifru face parte din categoria primitivelor criptografice de substitutie poligramica, ce presupun inlocuirea (substituirea) unei perechi de caractere din textul clar in textul criptat. El asigura astfel confuzia necesara cifrarii, insa nu asigura difuzie.
 ### Criptarea Playfair
 Criptarea Playfair implica parcurgerea urmatorilor pasi:
 1. Prelucrarea textului ce urmeaza a fi criptat
