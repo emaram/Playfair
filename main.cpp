@@ -5,6 +5,7 @@
 //  Created by Eugen Marin and Elena Marin on 12/10/2020.
 //
 #include "EncryptionManager.h"
+#include <cstring>
 
 void printUsageError();
 
