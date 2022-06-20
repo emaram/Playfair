@@ -10,7 +10,7 @@ pipeline {
     stage('deploy') {
       steps {
         echo "Deploying ..."
-        sh "./Playfair"
+        echo "Done!"
       }
     }
   }
