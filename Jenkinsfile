@@ -10,7 +10,7 @@ pipeline {
     stage('deploy') {
       steps {
         echo "Deploying ..."
-        sh "cp Playfair /mnt/Playfair.out"
+        sh "./Playfair"
       }
     }
   }
