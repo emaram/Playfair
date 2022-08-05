@@ -3,4 +3,4 @@ Playfair
 *.txt
 obj/*.o
 obj
-
+.vscode 
