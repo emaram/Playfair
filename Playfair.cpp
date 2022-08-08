@@ -10,11 +10,12 @@
 
 #define USE_STL_FEATURES 
 
-// -----------------------------------------------------------------------------
-// Constructor
-//		It remembers the key used for encryption / decryption (in UPPERCASE)
-//		Stores it in _key private member
-// -----------------------------------------------------------------------------
+/**
+ * @brief Construct a new Playfair:: Playfair object
+ * 
+ * @param key Encryption / decryption key
+ * @param show_detailed_info If true it will display detailed infrormation
+ */
 Playfair::Playfair(const std::string & key, bool show_detailed_info)
 {
 	this->_show_all_info =  show_detailed_info;
