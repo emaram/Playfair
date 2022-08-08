@@ -75,14 +75,14 @@ int Playfair::encrypt(const std::string & plain_text, /*out*/ std::string & encr
 	return 0;
 }
 
-// -----------------------------------------------------------------------------
-// decrypts
-//		Public function that takes an ecrypted text and decrypts it using the _key
-//
-//	@param IN  encrypted_text:	Text to be decrypted
-//	@param OUT plain_text:		Resulted text after decryption
-//	@returns 0 if success or a negative value
-// -----------------------------------------------------------------------------
+/**
+ * @brief Public function that takes an ecrypted text and decrypts it using the _key
+ * 
+ * @param encrypted_text Text to be decrypted
+ * @param plain_text Resulted text after decryption
+ * 
+ * @returns 0 if success or a negative value
+ */
 int Playfair::decrypt(const std::string & encrypted_text, /*out*/ std::string & plain_text)
 {
 	string s = this->convertToUpper(encrypted_text);
