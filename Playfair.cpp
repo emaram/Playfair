@@ -1,9 +1,14 @@
-//
-//  Playfair.cpp
-//  Playfair
-//
-//  Created by Eugen Marin and Elena Marin on 12/10/2020.
-//
+
+/**
+ * @file Playfair.cpp
+ * @author Eugen Marin
+ * @brief 
+ * @version 0.1
+ * @date 2022-08-08
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #include "Playfair.h"
 #include <algorithm>
 #include <iostream>
