@@ -29,14 +29,15 @@ Playfair::Playfair(const std::string & key, bool show_detailed_info)
 	this->buildTable();
 }
 
-// -----------------------------------------------------------------------------
-// encrypt
-//		Public function that takes a plain text and encrypts it using the _key
-//
-//	@param IN  plain_text:		Text to be incrypted
-//	@param OUT encrypted_text:	Resulted text after encryption
-//	@returns 0 if success or a negative value
-// -----------------------------------------------------------------------------
+
+/**
+ * @brief Public function that takes a plain text and encrypts it using the _key
+ * 
+ * @param plain_text Text to be encrypted
+ * @param encrypted_text Resulted text after encryption
+ * 
+ * @returns 0 if success or a negative value
+ */
 int Playfair::encrypt(const std::string & plain_text, /*out*/ std::string & encrypted_text)
 {
 	string s = this->convertToUpper(plain_text);
