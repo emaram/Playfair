@@ -179,6 +179,12 @@ void Playfair::printTable()
 //	@param IN  s:		Text to be converted
 //	@returns string:	Converted string.
 // -----------------------------------------------------------------------------
+/**
+ * @brief [DEVELOP] Private function that converts all characters to uppercase 
+ * 
+ * @param s 
+ * @return std::string 
+ */
 std::string Playfair::convertToUpper(const std::string & s)
 {
 	string result = s;
