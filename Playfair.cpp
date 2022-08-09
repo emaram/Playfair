@@ -166,7 +166,7 @@ void Playfair::printTable()
 }
 
 /**
- * @brief [DEVELOP] Private function that converts all characters to uppercase 
+ * @brief Private function that converts all characters to uppercase 
  * 
  * @param s 
  * @return std::string 
