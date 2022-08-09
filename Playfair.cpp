@@ -165,20 +165,6 @@ void Playfair::printTable()
 
 }
 
-// -----------------------------------------------------------------------------
-// convertToUpper
-//		Private function that converts all characters to uppercase 
-//		For each character c it checks:
-//			if between 65 and  90 (ASCII codes: 'A' = 65, 'Z' = 90) keep it as is
-//			if between 97 and 122 (ASCII codes: 'a' = 97, 'z' = 122) keep c - 32 (e.g. 'a' -> 'A', 'b' -> 'B')
-//			if SPACE or TAB, replace with 'Q'
-//			if NEW LINE, replace with 'W'
-//			if other value, ignore it
-// 			make I/J => use 73 for both 'I' and 'J'
-//
-//	@param IN  s:		Text to be converted
-//	@returns string:	Converted string.
-// -----------------------------------------------------------------------------
 /**
  * @brief [DEVELOP] Private function that converts all characters to uppercase 
  * 
