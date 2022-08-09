@@ -134,10 +134,10 @@ int Playfair::decrypt(const std::string & encrypted_text, /*out*/ std::string & 
 	return 0;
 }
 
-/**
- * @brief Public function that displays the table in matrix format
- * 
- */
+// -----------------------------------------------------------------------------
+// printTable
+//		Public function that displays the table in matrix format
+// -----------------------------------------------------------------------------
 void Playfair::printTable()
 {
 	cout << endl;
